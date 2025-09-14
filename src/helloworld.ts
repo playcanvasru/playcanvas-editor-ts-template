@@ -1,12 +1,10 @@
-class HelloWorld extends pc.ScriptType {
-    text: string;
-    entityLink : pc.Entity | null;
+import * as pc from 'playcanvas';
 
-    initialize() {
-        console.log('Hello ' + this.text);
-    }
-};
+export default class HelloWorld extends pc.ScriptType {
+	text: string = '';
+	entityLink: pc.Entity | null = null;
 
-pc.registerScript(HelloWorld, 'helloWorld');
-HelloWorld.attributes.add('text', {type: 'string'});
-HelloWorld.attributes.add('entityLink', {type : 'entity'})
+	initialize() {
+		console.log('Hello ' + this.text);
+	}
+}

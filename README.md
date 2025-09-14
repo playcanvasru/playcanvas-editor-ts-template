@@ -1,34 +1,41 @@
-A simple TypeScript template for PlayCanvas that can also sync with your playcanvas.com project.
+# Простой шаблон TypeScript для PlayCanvas
 
-## Quick start
+Простой шаблон TypeScript для PlayCanvas, который также может синхронизироваться с вашим проектом на playcanvas.com.
 
-This template uses the [playcanvas-sync][playcanvas-sync] tool to push files to your PlayCanvas project and requires a little bit of setup with `.pcconfig` and `pcconfig.json`.
+## Быстрый старт
 
-1. Copy `.pcconfig` to your home directory (Mac: `/Users/<username>`, Windows: `C:/User/<username>`). `.pcconfig` has been preconfigured to look for a config file in the current working directory which will be this project's folder ([more information here][playcanvas-sync-pcconfig-instructions]).
-2. Make a copy of `pcconfig.template.json` and rename to `pcconfig.json`. This is needed to configure playcanvas-sync to upload the file to correct PlayCanvas Editor project.
-3. Complete/Update the following properties in `pcconfig.json` using these [instructions][playcanvas-sync-pcconfig-instructions]:
-    - `PLAYCANVAS_API_KEY` - [Instructions to create an API key][create-api-key]
-    - `PLAYCANVAS_PROJECT_ID` - [Where to find the project ID][find-project-id]
-    - `PLAYCANVAS_BRANCH_ID` [Where to find the branch ID][find-branch-id]
-4. On the command line, run `npm install` to install the packages.
-5. On the command line, run the npm script `npm run watch-push:debug`.
-6. This will watch the `src` folder for changes, compile into `build/main.bundle.js` and if successful, upload to your playcanvas.com project.
+Этот шаблон использует инструмент [playcanvas-sync][playcanvas-sync] для загрузки файлов в ваш проект PlayCanvas и требует небольшой настройки с `.pcconfig` и `pcconfig.json`.
 
-Please note, if you are adding new `pc.ScriptTypes` or attributes to existing ones, you will need to manually parse the script after upload in the PlayCanvas Editor. [Please read this][playcanvas-sync-new-script-types] for more details.
+1. Скопируйте `.pcconfig` в ваш домашний каталог (Mac: `/Users/<username>`, Windows: `C:/User/<username>`). `.pcconfig` уже настроен на поиск конфигурационного файла в текущей рабочей директории, которой будет папка этого проекта ([подробнее здесь][playcanvas-sync-pcconfig-instructions]).
+2. Сделайте копию `pcconfig.template.json` и переименуйте её в `pcconfig.json`. Это необходимо для настройки playcanvas-sync для загрузки файлов в правильный проект PlayCanvas Editor.
+3. Заполните/обновите следующие свойства в `pcconfig.json` согласно этим [инструкциям][playcanvas-sync-pcconfig-instructions]:
+   - `PLAYCANVAS_API_KEY` - [Инструкции по созданию API ключа][create-api-key]
+   - `PLAYCANVAS_PROJECT_ID` - [Где найти ID проекта][find-project-id]
+   - `PLAYCANVAS_BRANCH_ID` - [Где найти ID ветки][find-branch-id]
+4. В командной строке выполните `npm install` для установки пакетов.
+5. В командной строке выполните npm-скрипт `npm run watch-push:debug`.
+6. Этот скрипт будет следить за изменениями в папке `src`, компилировать файлы в `build/main.bundle.js` и при успешной компиляции загружать их в ваш проект на playcanvas.com.
 
-## npm scripts
+> Обратите внимание: если вы добавляете новые `pc.ScriptTypes` или атрибуты к существующим, вам потребуется вручную проанализировать скрипт после загрузки в PlayCanvas Editor. [Подробности здесь][playcanvas-sync-new-script-types].
 
-| Command                      | Description                                                                                  |
-|------------------------------|----------------------------------------------------------------------------------------------|
-| `npm run build:debug`        | Compiles tsc files using debug config and builds to `build/main.bundle.js`                   |
-| `npm run build:release`      | Compiles tsc files using release config and builds to `build/main.bundle.js`                 |
-| `npm run watch:debug`        | Compiles tsc files using debug config on code changes and builds to `build/main.bundle.js`   |
-| `npm run watch:release`      | Compiles tsc files using release config on code changes and builds to `build/main.bundle.js` |
-| `npm run push`               | Uploads `build/main.bundle.js` to playcanvas.com project                                     |
-| `npm run build-push:debug`   | Performs `build:debug` and `push` npm scripts                                                |
-| `npm run build-push:release` | Performs `build:release` and `push` npm scripts                                              |
-| `npm run watch-push:debug`   | Performs `watch:debug` and `push` npm scripts                                                |
-| `npm run watch-push:release` | Performs `watch:release` and `push` npm scripts                                              |
+## npm-скрипты
+
+| Команда                      | Описание                                                                                                   |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `npm run build:debug`        | Компиляция файлов TypeScript с debug-конфигурацией и сборка в `build/main.bundle.js`                       |
+| `npm run build:release`      | Компиляция файлов TypeScript с release-конфигурацией и сборка в `build/main.bundle.js`                     |
+| `npm run watch:debug`        | Компиляция файлов TypeScript с debug-конфигурацией при изменениях кода и сборка в `build/main.bundle.js`   |
+| `npm run watch:release`      | Компиляция файлов TypeScript с release-конфигурацией при изменениях кода и сборка в `build/main.bundle.js` |
+| `npm run push`               | Загрузка `build/main.bundle.js` в проект на playcanvas.com                                                 |
+| `npm run build-push:debug`   | Выполняет скрипты `build:debug` и `push`                                                                   |
+| `npm run build-push:release` | Выполняет скрипты `build:release` и `push`                                                                 |
+| `npm run watch-push:debug`   | Выполняет скрипты `watch:debug` и `push`                                                                   |
+| `npm run watch-push:release` | Выполняет скрипты `watch:release` и `push`                                                                 |
+| `npm run rollup:build`       | Сборка проекта с помощью Rollup                                                                            |
+| `npm run rollup:watch`       | Сборка проекта с помощью Rollup в режиме наблюдения за изменениями                                         |
+| `npm run build-push`         | Выполняет скрипты `rollup:build` и `push`                                                                  |
+| `npm run watch-push`         | Выполняет скрипты `rollup:watch`                                                                           |
+|  |
 
 [playcanvas-sync]: https://github.com/playcanvas/playcanvas-sync
 [playcanvas-sync-pcconfig-instructions]: https://github.com/playcanvas/playcanvas-sync#config-variables
